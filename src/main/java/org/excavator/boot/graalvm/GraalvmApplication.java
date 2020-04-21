@@ -28,7 +28,7 @@ public class GraalvmApplication {
 	@Bean
 	ApplicationRunner runner(DatabaseClient databaseClient, ReservationRepository reservationRepository){
 		return args -> {
-			var flux = Flux.just("cmonkey", "foo")
+			Flux<Reservation> flux = Flux.just("cmonkey", "foo")
 					.map(name -> new Reservation(null , name))
 					.flatMap(reservationRepository::save);
 
